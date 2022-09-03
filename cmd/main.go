@@ -14,7 +14,10 @@ func main() {
 	router.GET("/version", getVersion)
 	router.GET("/time", getTime)
 	router.GET("/lastVisit", getLastVisit)
-	router.Run("localhost:8080")
+	if err := router.Run("localhost:8080"); err != nil {
+		return
+	}
+
 }
 
 func getVersion(c *gin.Context) {
